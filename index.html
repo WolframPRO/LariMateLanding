@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LariMate: Small Business Taxes in Georgia, Simplified</title>
+    <meta name="description" content="LariMate automates your 1% tax accounting, income tracking, and declaration prep. The essential app for Individual Entrepreneurs in Georgia.">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Modern CSS Reset */
+        *, *::before, *::after { box-sizing: border-box; }
+        body, h1, h2, h3, p, figure, blockquote, dl, dd { margin: 0; }
+        ul[role='list'], ol[role='list'] { list-style: none; padding: 0; }
+        html { scroll-behavior: smooth; }
+        
+        :root {
+            --primary-blue: #007AFF;
+            --primary-blue-dark: #0056b3;
+            --dark-text: #1a1a1a;
+            --light-text: #6b7280;
+            --bg-light: #f7f8fc;
+            --bg-white: #ffffff;
+            --border-light: rgba(0, 0, 0, 0.08);
+            --shadow-soft: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-medium: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --border-radius: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            background-color: var(--bg-light);
+            color: var(--dark-text);
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            padding: 16px 0;
+            z-index: 10;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 700;
+            font-size: 24px;
+        }
+        .logo img {
+            width: 44px;
+            height: 44px;
+            margin-right: 12px;
+            border-radius: 10px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+            border: none;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            background-color: var(--primary-blue-dark);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-light) 0%, #eaf4ff 100%);
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: var(--dark-text);
+            line-height: 1.15;
+            max-width: 850px;
+            margin: 0 auto 24px;
+            letter-spacing: -0.04em;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--light-text);
+            max-width: 720px;
+            margin: 0 auto 40px;
+        }
+        .hero .btn {
+            padding: 16px 32px;
+            font-size: 1.1rem;
+        }
+        .trust-bar {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px 40px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: var(--light-text);
+            font-weight: 500;
+        }
+        .phone-mockup {
+            position: relative;
+            max-width: 400px;
+            margin: 60px auto 0;
+            filter: drop-shadow(0 20px 25px rgba(0,0,0,0.15));
+        }
+        .phone-mockup img {
+            border-radius: 70px;
+            border: 10px solid #1c1c1e;
+            width: 100%;
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 0;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 800;
+            color: var(--dark-text);
+            margin-bottom: 16px;
+            letter-spacing: -0.03em;
+        }
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--light-text);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .benefit-card {
+            background: var(--bg-white);
+            padding: 32px;
+            border-radius: var(--border-radius);
+            text-align: left;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+        .benefit-card .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: #eef7ff;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+        .benefit-card .icon img {
+            width: 28px;
+            height: 28px;
+        }
+        .benefit-card h3 {
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 12px;
+        }
+        .benefit-card p {
+            color: var(--light-text);
+            font-size: 1rem;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            align-items: center;
+        }
+        .gallery-grid img {
+            max-width: 100%;
+            max-height: 600px;
+            width: auto;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 20px;
+            box-shadow: var(--shadow-medium);
+            transition: transform 0.3s ease;
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Social Proof Section */
+        .testimonial {
+            background-color: #1c1c1e;
+            color: #fff;
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-medium);
+            max-width: 850px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .testimonial blockquote {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 0 0 24px;
+            border: none;
+            padding: 0;
+            line-height: 1.5;
+        }
+        .testimonial cite {
+            font-weight: 600;
+            color: rgba(255,255,255,0.7);
+            font-style: normal;
+        }
+        
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 20px;
+            border: 1px solid var(--border-light);
+        }
+        .faq-item summary {
+            font-size: 1.125rem;
+            font-weight: 600;
+            padding: 24px;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.2s ease-in-out;
+        }
+        .faq-item[open] summary::after {
+            transform: rotate(45deg);
+        }
+        .faq-item .faq-content {
+            padding: 0 24px 24px;
+            color: var(--light-text);
+        }
+        
+        /* B2B Contact Section */
+        .b2b-contact {
+            background: var(--bg-white);
+            border-radius: 24px;
+            padding: 60px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid var(--border-light);
+        }
+        .b2b-contact h2 {
+            font-size: 2.25rem;
+            font-weight: 800;
+        }
+        .b2b-contact p {
+            font-size: 1.125rem;
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 16px auto 32px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .footer .copyright {
+            color: #9ca3af;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container nav">
+            <a href="#" class="logo">
+                <img src="images/app-icon.png" alt="LariMate Logo">
+                <span>LariMate</span>
+            </a>
+            <a href="https://apps.apple.com/ge/app/larimate-small-business/id6714447735" target="_blank" class="btn">Download App</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Finally, Small Business Taxes in Georgia Made Simple.</h1>
+                <p>Stop wasting hours on spreadsheets and worrying about exchange rates. LariMate automates your 1% tax accounting so you can focus on what you do best: running your business.</p>
+                <a href="https://apps.apple.com/ge/app/larimate-small-business/id6714447735" target="_blank" class="btn">Download on the App Store</a>
+                
+                <div class="trust-bar">
+                    <span>✓ Uses Official NBG Rates</span>
+                    <span>✓ Secure iCloud Sync</span>
+                    <span>✓ Built for Georgia's 1% Tax Law</span>
+                </div>
+                
+                <div class="phone-mockup">
+                    <img src="images/hero-screenshot.png" alt="LariMate app dashboard">
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Escape the Chaos of Tax Season</h2>
+                    <p>LariMate transforms your complex tax obligations into a simple, three-step process.</p>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="icon">
+                            <img src="images/icon-currency.png" alt="Currency Icon">
+                        </div>
+                        <h3>Track Foreign Income Flawlessly</h3>
+                        <p>Log payments in USD, GEL, or any other official currency of the NBG. LariMate automatically fetches the correct exchange rate for the exact day of the transaction.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="icon">
+                            <img src="images/icon-calculator.png" alt="Calculator Icon">
+                        </div>
+                        <h3>Calculate & Analyze with Confidence</h3>
+                        <p>The app instantly calculates your 1% tax liability and provides clear, built-in analytics, helping you understand your income flow and eliminating costly errors.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="icon">
+                            <img src="images/icon-file.png" alt="File Icon">
+                        </div>
+                        <h3>Never Miss a Deadline</h3>
+                        <p>Get the exact figures for your tax return and receive timely push notifications before the payment deadline. File correctly and on time, every time.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="background-color: #fff;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>An Interface as Simple as Your New Workflow</h2>
+                </div>
+                <div class="gallery-grid">
+                    <img src="images/gallery-1.png" alt="Screenshot of adding a payment">
+                    <img src="images/gallery-2.png" alt="Screenshot of the monthly summary">
+                    <img src="images/gallery-3.png" alt="Screenshot of the declaration helper">
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="container">
+                 <div class="section-header">
+                    <h2>Join 50+ Entrepreneurs Who Trust LariMate</h2>
+                </div>
+                <div class="testimonial">
+                    <blockquote>"As an expat, LariMate has been a lifesaver. I went from being stressed about taxes to filing with confidence in minutes. It's an essential tool for any IE in Georgia."</blockquote>
+                    <cite>— A Happy LariMate User</cite>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="background-color: #fff;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Your Top Questions, Answered</h2>
+                </div>
+                <div class="faq-container">
+                    <details class="faq-item">
+                        <summary>Which exchange rate does LariMate use?</summary>
+                        <div class="faq-content">
+                            <p>LariMate exclusively uses the official daily exchange rates published by the National Bank of Georgia (NBG), which is the legal requirement for tax reporting.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Is my financial data secure?</summary>
+                        <div class="faq-content">
+                            <p>Absolutely. Your data is stored securely in your private iCloud account and is never shared with us or any third parties. It syncs seamlessly and privately between your Apple devices.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Do I still need an accountant?</summary>
+                        <div class="faq-content">
+                           <p>For most Individual Entrepreneurs with the 1% small business status and straightforward income, LariMate provides all the tools you need to manage your own tax declarations. If you have a more complex situation, we always recommend consulting a professional.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+        
+        <!-- B2B Contact Section -->
+        <section class="section">
+            <div class="container">
+                <div class="b2b-contact">
+                    <h2>For Business & Partnerships</h2>
+                    <p>We are looking for partners to integrate LariMate into banking apps or financial ecosystems. If you are interested in a white-label solution or API integration, please contact us.</p>
+                    <a href="mailto:larimate.app@gmail.com" class="btn">Contact Us</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <a href="#" class="logo" style="justify-content: center; margin-bottom: 20px;">
+                <img src="images/app-icon.png" alt="LariMate Logo">
+                <span>LariMate</span>
+            </a>
+            <p class="copyright">&copy; 2025 LariMate. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
